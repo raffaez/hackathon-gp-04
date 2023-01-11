@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Turma } from './turma/entities/turma.entity';
+
 import { GrupoPi } from './grupoPi/entities/grupoPi.entity';
-import { TurmaModule } from './turma/turma.module';
 import { GrupoPiModule } from './grupoPi/grupoPi.module';
 import { Projeto } from './projeto/entities/projeto.entity';
 import { projetoModule } from './projeto/projeto.module';
-
+import { Turma } from './turma/entities/turma.entity';
+import { TurmaModule } from './turma/turma.module';
 
 @Module({
   imports: [
@@ -24,11 +22,10 @@ import { projetoModule } from './projeto/projeto.module';
     }),
     TurmaModule,
     GrupoPiModule,
-    projetoModule
-
+    projetoModule,
   ],
 
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
