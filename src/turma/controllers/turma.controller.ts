@@ -23,6 +23,12 @@ export class TurmaController {
     return this.turmaService.findAll();
   }
 
+  @Get('/:id')
+  @HttpCode(HttpStatus.OK)
+  findById(@Param('id', ParseIntPipe) id: number): Promise<Turma> {
+    return this.turmaService.findById(id);
+  }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() turma: Turma): Promise<Turma> {
