@@ -1,5 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { GrupoPi } from 'src/grupoPi/entities/grupoPi.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'tb_turma' })
 export class Turma {
@@ -13,4 +14,7 @@ export class Turma {
   @IsNotEmpty()
   @Column({ default: true })
   isAtivo: boolean;
+
+  @OneToMany(() => GrupoPi, (grupoPi) => grupoPi.turma)
+  grupoPi: GrupoPi[];
 }

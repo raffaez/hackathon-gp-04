@@ -1,5 +1,12 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { GrupoPi } from 'src/grupoPi/entities/grupoPi.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'tb_projeto' })
 export class Projeto {
@@ -20,4 +27,8 @@ export class Projeto {
   @IsNotEmpty()
   @Column({ length: 100, nullable: false })
   pitProjeto: string;
+
+  @OneToOne(() => GrupoPi)
+  @JoinColumn()
+  grupoPi: GrupoPi;
 }

@@ -12,7 +12,9 @@ export class ProjetoService {
   ) {}
 
   async findAll(): Promise<Projeto[]> {
-    return await this.projetoRepository.find();
+    return await this.projetoRepository.find({
+      relations: ['grupoPi', 'grupoPi.turma'],
+    });
   }
 
   async findById(id: number): Promise<Projeto> {
@@ -20,6 +22,7 @@ export class ProjetoService {
       where: {
         id,
       },
+      relations: ['grupoPi', 'grupoPi.turma'],
     });
 
     if (!projeto)
@@ -32,6 +35,7 @@ export class ProjetoService {
       where: {
         nomeProjeto: ILike(`%${nome}%`),
       },
+      relations: ['grupoPi', 'grupoPi.turma'],
     });
   }
 
