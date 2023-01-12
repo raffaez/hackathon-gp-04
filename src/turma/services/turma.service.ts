@@ -34,8 +34,8 @@ export class TurmaService {
   async update(turma: Turma): Promise<Turma> {
     const buscaTurma: Turma = await this.findById(turma.id);
 
-    if (buscaTurma || !turma.id)
-      throw new HttpException('Turma nao escontrada', HttpStatus.NOT_FOUND);
+    if (!buscaTurma || !turma.id)
+      throw new HttpException('Turma não encontrada', HttpStatus.NOT_FOUND);
 
     return await this.turmaRepository.save(turma);
   }
@@ -43,7 +43,7 @@ export class TurmaService {
   async delete(id: number): Promise<DeleteResult> {
     const buscaTurma = await this.findById(id);
 
-    if (buscaTurma)
+    if (!buscaTurma)
       throw new HttpException('Turma não encontrada', HttpStatus.NOT_FOUND);
 
     return await this.turmaRepository.delete(id);
