@@ -1,13 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { GrupoPi } from './grupoPi/entities/grupoPi.entity';
-import { GrupoPiModule } from './grupoPi/grupoPi.module';
-import { Projeto } from './projeto/entities/projeto.entity';
-import { projetoModule } from './projeto/projeto.module';
-import { Turma } from './turma/entities/turma.entity';
-import { TurmaModule } from './turma/turma.module';
 import { AppController } from './app.controller';
+import { GrupoPiModule } from './grupoPi/grupoPi.module';
+import { projetoModule } from './projeto/projeto.module';
+import { TurmaModule } from './turma/turma.module';
 
 @Module({
   imports: [
