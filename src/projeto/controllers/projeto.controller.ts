@@ -10,10 +10,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger/dist';
 
 import { Projeto } from '../entities/projeto.entity';
 import { ProjetoService } from '../services/projeto.service';
 
+@ApiTags('Projetos')
 @Controller('/projetos')
 export class ProjetoController {
   constructor(private readonly projetoService: ProjetoService) {}

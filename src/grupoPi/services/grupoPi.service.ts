@@ -12,6 +12,9 @@ export class GrupoPiService {
 
   async findAll(): Promise<GrupoPi[]> {
     return await this.grupoPiRepository.find({
+      order: {
+        numeroGrupo: 'ASC',
+      },
       relations: {
         turma: true,
       },

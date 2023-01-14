@@ -13,6 +13,9 @@ export class ProjetoService {
 
   async findAll(): Promise<Projeto[]> {
     return await this.projetoRepository.find({
+      order: {
+        nomeProjeto: 'ASC',
+      },
       relations: ['grupoPi', 'grupoPi.turma'],
     });
   }

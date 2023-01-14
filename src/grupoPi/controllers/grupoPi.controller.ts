@@ -10,11 +10,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { GrupoPiService } from '../services/grupoPi.service';
-import { GrupoPi } from '../entities/grupoPi.entity';
-import { brotliDecompressSync } from 'zlib';
-import { DeleteDateColumn } from 'typeorm';
+import { ApiTags } from '@nestjs/swagger/dist';
 
+import { GrupoPi } from '../entities/grupoPi.entity';
+import { GrupoPiService } from '../services/grupoPi.service';
+
+@ApiTags('Grupos')
 @Controller('/grupos')
 export class GrupoPiController {
   constructor(private readonly grupoPiService: GrupoPiService) {}

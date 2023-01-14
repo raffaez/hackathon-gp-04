@@ -11,7 +11,11 @@ export class TurmaService {
   ) {}
 
   async findAll(): Promise<Turma[]> {
-    return await this.turmaRepository.find();
+    return await this.turmaRepository.find({
+      order: {
+        descricao: 'ASC',
+      },
+    });
   }
 
   async findById(id: number): Promise<Turma> {

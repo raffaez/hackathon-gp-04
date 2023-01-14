@@ -12,7 +12,9 @@ import {
 } from '@nestjs/common';
 import { TurmaService } from '../services/turma.service';
 import { Turma } from '../entities/turma.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Turmas')
 @Controller('/turmas')
 export class TurmaController {
   constructor(private readonly turmaService: TurmaService) {}
