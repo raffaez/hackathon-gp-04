@@ -38,6 +38,15 @@ export class GrupoPiController {
     return this.grupoPiService.findByGrupo(grupo);
   }
 
+  @Get('/:numeroGrupo/:turma')
+  @HttpCode(HttpStatus.OK)
+  findByTurma(
+    @Param('numeroGrupo', ParseIntPipe) numeroGrupo: string,
+    @Param('turma', ParseIntPipe) turmaId: number,
+  ): Promise<boolean> {
+    return this.grupoPiService.findByTurma(numeroGrupo, turmaId);
+  }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() grupo: GrupoPi): Promise<GrupoPi> {

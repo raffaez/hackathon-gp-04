@@ -36,15 +36,30 @@ export class GrupoPiService {
     return grupoPi;
   }
 
-  async findByGrupo(grupo: string): Promise<GrupoPi[]> {
+  async findByGrupo(numeroGrupo: string): Promise<GrupoPi[]> {
     return await this.grupoPiRepository.find({
       where: {
-        numeroGrupo: ILike(`%${grupo}%`),
+        numeroGrupo: ILike(`%${numeroGrupo}%`),
       },
       relations: {
         turma: true,
       },
     });
+  }
+
+  async findByTurma(numeroGrupo: string, turmaId: number): Promise<boolean> {
+    const busca = await this.grupoPiRepository.find({
+      where: {
+        numeroGrupo: ILike(`%${numeroGrupo}%`),
+        turma: {
+          id: turmaId,
+        },
+      },
+    });
+
+    if (busca.length > 0) return true;
+
+    return false;
   }
 
   async create(grupo: GrupoPi): Promise<GrupoPi> {
