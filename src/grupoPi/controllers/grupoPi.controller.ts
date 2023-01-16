@@ -38,11 +38,11 @@ export class GrupoPiController {
     return this.grupoPiService.findByGrupo(grupo);
   }
 
-  @Get('/:numeroGrupo/:turma')
+  @Get('/:numeroGrupo/:turmaId')
   @HttpCode(HttpStatus.OK)
   findByTurma(
-    @Param('numeroGrupo', ParseIntPipe) numeroGrupo: string,
-    @Param('turma', ParseIntPipe) turmaId: number,
+    @Param('numeroGrupo') numeroGrupo: string,
+    @Param('turmaId', ParseIntPipe) turmaId: number,
   ): Promise<boolean> {
     return this.grupoPiService.findByTurma(numeroGrupo, turmaId);
   }
