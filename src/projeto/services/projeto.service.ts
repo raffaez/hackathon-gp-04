@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, ILike, Repository } from 'typeorm';
 import { Projeto } from '../entities/projeto.entity';
+import { addHttps } from 'src/helpers/addHttps';
 
 @Injectable()
 export class ProjetoService {
@@ -40,6 +41,20 @@ export class ProjetoService {
       },
       relations: ['grupoPi', 'grupoPi.turma'],
     });
+  }
+
+  async findByGrupo(grupoId: number): Promise<boolean> {
+    const busca = await this.projetoRepository.find({
+      where: {
+        grupoPi: {
+          id: grupoId,
+        },
+      },
+    });
+
+    if (busca.length > 0) return true;
+
+    return false;
   }
 
   async create(projeto: Projeto): Promise<Projeto> {

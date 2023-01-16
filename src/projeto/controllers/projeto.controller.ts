@@ -38,6 +38,14 @@ export class ProjetoController {
     return this.projetoService.findByName(nome);
   }
 
+  @Get('/grupo/:grupoId')
+  @HttpCode(HttpStatus.OK)
+  findByTurma(
+    @Param('grupoId', ParseIntPipe) grupoId: number,
+  ): Promise<boolean> {
+    return this.projetoService.findByGrupo(grupoId);
+  }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() projeto: Projeto): Promise<Projeto> {
