@@ -58,6 +58,10 @@ export class ProjetoService {
   }
 
   async create(projeto: Projeto): Promise<Projeto> {
+    projeto.logoProjeto = addHttps(projeto.logoProjeto);
+    projeto.linkProjeto = addHttps(projeto.linkProjeto);
+    projeto.pitProjeto = addHttps(projeto.pitProjeto);
+
     return await this.projetoRepository.save(projeto);
   }
 
